@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d34a3957-4041-460c-8914-db79541b8cee">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     parkir_masuk.`no_tiket` AS parkir_masuk_no_tiket,
+     parkir_masuk.`no_pol` AS parkir_masuk_no_pol,
+     parkir_masuk.`jenis` AS parkir_masuk_jenis,
+     parkir_masuk.`tgl_masuk` AS parkir_masuk_tgl_masuk,
+     parkir_masuk.`jam_masuk` AS parkir_masuk_jam_masuk
+FROM
+     `parkir_masuk` parkir_masuk]]>
+	</queryString>
+	<field name="parkir_masuk_no_tiket" class="java.lang.String"/>
+	<field name="parkir_masuk_no_pol" class="java.lang.String"/>
+	<field name="parkir_masuk_jenis" class="java.lang.String"/>
+	<field name="parkir_masuk_tgl_masuk" class="java.sql.Date"/>
+	<field name="parkir_masuk_jam_masuk" class="java.sql.Time"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="634ec7a4-8c57-4134-b25c-1db1e2acf626" x="232" y="12" width="347" height="32"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN PARKIR MASUK]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="56" splitType="Stretch">
+			<line>
+				<reportElement uuid="d9a72a1e-c619-47f3-bf2c-f5f63d111f7f" x="43" y="13" width="718" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="d9a72a1e-c619-47f3-bf2c-f5f63d111f7f" x="43" y="52" width="718" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="1a0ddc3b-f12f-4c5c-b877-9b9b17b7bc73" x="43" y="23" width="103" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO TIKET]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c5771437-39e0-47c6-870e-0cb282cbd32d" x="166" y="23" width="126" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO POLISI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d85666da-33fb-438e-ac52-1dd88653ab0a" x="307" y="23" width="160" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JENIS KENDARAAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a0dd9b22-6479-40d0-94d6-7f6a9baacd51" x="474" y="23" width="160" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TANGGAL MASUK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d84926bd-c6e9-44c8-ae5f-2500d1fb8b12" x="646" y="23" width="115" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JAM MASUK]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement uuid="2aeae58d-cb4e-44b1-a25b-a2c89d8b3941" x="43" y="0" width="109" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_masuk_no_tiket}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="da4b1ec4-c99d-4018-bab0-71f1d97a633a" x="172" y="0" width="120" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_masuk_no_pol}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="19989f52-d4ee-46b4-9553-884d9808bed9" x="314" y="0" width="153" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_masuk_jenis}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="35718e4b-403c-4062-b93c-84fa3e90bd2f" x="474" y="0" width="160" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_masuk_tgl_masuk}]]></textFieldExpression>
+			</textField>
+			<textField pattern="hh.mm.ss a">
+				<reportElement uuid="0e5f7806-61c5-446a-a001-fc9ae49b1ee8" x="646" y="0" width="115" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_masuk_jam_masuk}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="d9a72a1e-c619-47f3-bf2c-f5f63d111f7f" x="43" y="27" width="718" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="52" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

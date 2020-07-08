@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="19949678-9178-40c6-a741-4490047e65b7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="no_tiket" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     parkir_keluar.`no_tiket` AS parkir_keluar_no_tiket,
+     parkir_keluar.`no_polisi` AS parkir_keluar_no_polisi,
+     parkir_keluar.`jenis_kendaraan` AS parkir_keluar_jenis_kendaraan,
+     parkir_keluar.`tgl_masuk` AS parkir_keluar_tgl_masuk,
+     parkir_keluar.`jam_masuk` AS parkir_keluar_jam_masuk,
+     parkir_keluar.`tgl_keluar` AS parkir_keluar_tgl_keluar,
+     parkir_keluar.`jam_keluar` AS parkir_keluar_jam_keluar,
+     parkir_keluar.`durasi_hari` AS parkir_keluar_durasi_hari,
+     parkir_keluar.`durasi_jam` AS parkir_keluar_durasi_jam,
+     parkir_keluar.`biaya_parkir` AS parkir_keluar_biaya_parkir,
+     parkir_keluar.`biaya_total` AS parkir_keluar_biaya_total
+FROM
+     `parkir_keluar` parkir_keluar
+WHERE
+     parkir_keluar.no_tiket = $P{no_tiket}]]>
+	</queryString>
+	<field name="parkir_keluar_no_tiket" class="java.lang.String"/>
+	<field name="parkir_keluar_no_polisi" class="java.lang.String"/>
+	<field name="parkir_keluar_jenis_kendaraan" class="java.lang.String"/>
+	<field name="parkir_keluar_tgl_masuk" class="java.sql.Date"/>
+	<field name="parkir_keluar_jam_masuk" class="java.sql.Time"/>
+	<field name="parkir_keluar_tgl_keluar" class="java.sql.Date"/>
+	<field name="parkir_keluar_jam_keluar" class="java.sql.Time"/>
+	<field name="parkir_keluar_durasi_hari" class="java.lang.String"/>
+	<field name="parkir_keluar_durasi_jam" class="java.lang.String"/>
+	<field name="parkir_keluar_biaya_parkir" class="java.lang.String"/>
+	<field name="parkir_keluar_biaya_total" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="311" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="634ec7a4-8c57-4134-b25c-1db1e2acf626" x="102" y="8" width="347" height="32"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KARCIS PARKIR]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="414fe389-8a98-4ebb-9b3e-478d0b85999f" x="162" y="57" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_keluar_no_tiket}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1a0ddc3b-f12f-4c5c-b877-9b9b17b7bc73" x="23" y="57" width="103" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO TIKET]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7532bd58-1d69-4f97-baf9-83cd1079197d" x="162" y="95" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_keluar_no_polisi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7e7e5549-1628-4f09-a5cf-c1a586528cfe" x="162" y="131" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_keluar_jenis_kendaraan}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="f430aff9-5924-43df-a535-cca912de69f2" x="162" y="168" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_keluar_tgl_masuk}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c5771437-39e0-47c6-870e-0cb282cbd32d" x="23" y="95" width="126" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO POLISI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d85666da-33fb-438e-ac52-1dd88653ab0a" x="23" y="131" width="126" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JENIS KENDARAAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a0dd9b22-6479-40d0-94d6-7f6a9baacd51" x="23" y="168" width="126" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TANGGAL MASUK]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="d9a72a1e-c619-47f3-bf2c-f5f63d111f7f" x="12" y="49" width="526" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="d84926bd-c6e9-44c8-ae5f-2500d1fb8b12" x="23" y="205" width="115" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JAM MASUK]]></text>
+			</staticText>
+			<textField pattern="hh.mm a">
+				<reportElement uuid="f59c5eda-d6cb-426a-97d3-b203ff08bcba" x="162" y="205" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_keluar_jam_masuk}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="240c89b3-df59-43be-b47f-0a23f777116e" x="433" y="57" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_keluar_tgl_keluar}]]></textFieldExpression>
+			</textField>
+			<textField pattern="hh.mm a">
+				<reportElement uuid="c4d26eab-a4fc-4106-a94f-201ae05769c3" x="433" y="93" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_keluar_jam_keluar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a0dd9b22-6479-40d0-94d6-7f6a9baacd51" x="286" y="57" width="126" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TANGGAL KELUAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a0dd9b22-6479-40d0-94d6-7f6a9baacd51" x="286" y="93" width="126" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JAM KELUAR]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="71aaaa90-cba3-4d9e-bc36-708b2cd5817c" x="433" y="130" width="103" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_keluar_durasi_jam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a0dd9b22-6479-40d0-94d6-7f6a9baacd51" x="286" y="130" width="126" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DURASI JAM]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="827626af-e383-4881-8f9b-1f1252b227a4" x="436" y="166" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_keluar_durasi_hari}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a0dd9b22-6479-40d0-94d6-7f6a9baacd51" x="286" y="166" width="126" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DURASI HARI]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="d9a72a1e-c619-47f3-bf2c-f5f63d111f7f" x="12" y="238" width="526" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement uuid="dfdba9c5-cfbc-48a5-a31f-9b09247238d9" x="435" y="205" width="98" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_keluar_biaya_parkir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0d91b60e-7835-442b-b18f-b0550ad124ec" x="366" y="247" width="145" height="20" backcolor="#FFFF33"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parkir_keluar_biaya_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a0dd9b22-6479-40d0-94d6-7f6a9baacd51" x="286" y="205" width="126" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BIAYA PARKIR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a0dd9b22-6479-40d0-94d6-7f6a9baacd51" x="206" y="247" width="160" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL BIAYA PARKIR]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="d9a72a1e-c619-47f3-bf2c-f5f63d111f7f" x="12" y="277" width="526" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="1a0ddc3b-f12f-4c5c-b877-9b9b17b7bc73" x="154" y="57" width="27" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a0ddc3b-f12f-4c5c-b877-9b9b17b7bc73" x="154" y="93" width="27" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a0ddc3b-f12f-4c5c-b877-9b9b17b7bc73" x="154" y="130" width="27" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a0ddc3b-f12f-4c5c-b877-9b9b17b7bc73" x="154" y="166" width="27" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a0ddc3b-f12f-4c5c-b877-9b9b17b7bc73" x="154" y="205" width="27" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a0ddc3b-f12f-4c5c-b877-9b9b17b7bc73" x="422" y="57" width="27" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a0ddc3b-f12f-4c5c-b877-9b9b17b7bc73" x="422" y="93" width="27" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a0ddc3b-f12f-4c5c-b877-9b9b17b7bc73" x="422" y="130" width="27" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a0ddc3b-f12f-4c5c-b877-9b9b17b7bc73" x="422" y="166" width="27" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a0ddc3b-f12f-4c5c-b877-9b9b17b7bc73" x="422" y="205" width="27" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a0ddc3b-f12f-4c5c-b877-9b9b17b7bc73" x="354" y="247" width="27" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="54" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="78" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="37" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
